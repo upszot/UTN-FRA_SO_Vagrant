@@ -3,9 +3,11 @@
 
 ## Se requiere tener previamente instalado en el equipo Host los siguientes programas
  - Virtualbox 
-   - https://www.virtualbox.org/wiki/Downloads
+   - [VirtualBox Instalable](https://www.virtualbox.org/wiki/Downloads)
+   - [Manual de VBoxManage command-line](https://www.virtualbox.org/manual/ch08.html#vboxmanage-intro)
  - Vagrant
-   - https://developer.hashicorp.com/vagrant/downloads?product_intent=vagrant
+   - [Vagrant Instalable](https://developer.hashicorp.com/vagrant/downloads?product_intent=vagrant)
+   - [Vagrant Cloud Boxes](https://app.vagrantup.com/boxes/search)
 
  Opcionales
  - Putty / xshell
@@ -58,4 +60,10 @@ vagrant destroy -f
 | **Make_VagrantBox**	| Playbook de Ansible para generar un vagrantbox en base a una vm |
 | **VagrantFiles** 		| Ejemplos de vagrantfile para levantar distintos equipos |
 
+## Info Extra
+
+- [Video - Creacion Vagrant Boxes](https://www.youtube.com/watch?v=TUfciJ7tynY)
+
+- [vagrantfile hyper-v](https://learn.microsoft.com/en-us/virtualization/community/team-blog/2017/20170706-vagrant-and-hyper-v-tips-and-tricks)
+- [Vagrantfile windows](https://dev.to/sannae/setting-up-windows-virtual-test-environments-with-vagrant-4k1b)
 
