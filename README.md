@@ -55,8 +55,12 @@ vagrant box remove generic/rhel7
 ```sh
 # Crear y dejar en running la/s VM definidas en el vagrantfile
 vagrant up
+
 # Apagar y Eliminar sin pedir confirmacion
 vagrant destroy -f
+
+# Apagar la vm sin eliminarla (una forma de mantener persistencia de datos)
+vagrant halt
 ```
 
 
