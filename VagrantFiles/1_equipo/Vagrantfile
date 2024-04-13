@@ -1,30 +1,46 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+#https://developer.hashicorp.com/vagrant/docs/providers/virtualbox/configuration
 Vagrant.configure("2") do |config|
 
-  #---- Comentar y descomentar segun la distro a usar ----#
-  #config.vm.box = "generic/rhel7"
-  #config.vm.box = "generic/ubuntu2204"
+  # VagrantBox que se usara para levantar.
   config.vm.box = "ubuntu/jammy64"
-  config.ssh.insert_key = false
-
-  config.vm.synced_folder '.', '/home/vagrant/foo'
+  
+  #Nombre de la pc dentro del Sistema Operativo
   config.vm.hostname = "VMPruebas"
-  config.vm.define :VMPruebas do |t|
-  end
-
+  
+  config.vm.synced_folder '.', '/home/vagrant/carpeta_compartida'
+  
+  #Configuracion de Red
   config.vm.network "private_network", :name => '', ip: "192.168.56.2"
-
+  
+  #Configuraciones de la VM en VirtualBox
   config.vm.provider "virtualbox" do |vb|
-      vb.memory = "2048"
-      vb.name = "VMPruebas"
-      vb.cpus = 2
-      vb.linked_clone = true
+    #Cantidad de RAM
+    vb.memory = "2048"
+    #Cantidad de Procesadores
+    vb.cpus = 2
+
+    #Nombre de la VM en VirtualBox 
+    vb.name = "VMPruebas"
+    
+    # Habilitar clones enlazados en VirtualBox
+    vb.linked_clone = true
+
+    # Mostrar interfaz gráfica de la VM en VirtualBox
+    vb.gui = false
+    
   end
+
   config.vm.provision "shell", inline: <<-SHELL
     sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
     sudo systemctl restart sshd
   SHELL
+  config.ssh.insert_key = false
+
+  # Mensaje post-up...
+  config.vm.post_up_message = "  vagrant ssh          # Ingresa por linea de comandos a la vm"
+
 
 end

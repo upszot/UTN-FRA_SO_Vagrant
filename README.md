@@ -1,18 +1,25 @@
-# SO_Vagrant
+# UTN-FRA_SO_Vagrant
+
+- **Que es Vagrant?**
+>Vagrant es una aplicación libre desarrollada en ruby que nos permite crear y personalizar entornos de desarrollo livianos, reproducibles y portables. Vagrant nos permite automatizar la creación y gestión de máquinas virtuales. Las máquinas virtuales creadas por vagrant se pueden ejecutar con distintos gestores de máquinas virtuales
+> Oficialmente (VirtualBox, VMWare, KVM,…), pero existen desarrollos para utilizar multiples provider (google , aws, Openstak, vcenter, OpenShift) [Available-Vagrant-Plugins](https://github.com/hashicorp/vagrant/wiki/Available-Vagrant-Plugins#providers) en nuestros ejemplo vamos a usar máquinas virtuales en VirtualBox.
+>
+>El objetivo principal de vagrant es aproximar los entornos de desarrollo y producción, de esta manera el desarrollador tiene a su disposición una manera  muy sencilla de desplegar una infraestructura similar a la que se va a tener en entornos de producción. A los administradores de sistemas les facilita la creación de infraestrucutras de prueba y desarrollo.
+>
+>Para más información tienes a tu disposición toda la documentación en su página oficial: http://www.vagrantup.com/
 
 
 ## Se requiere tener previamente instalado en el equipo Host los siguientes programas
- - Virtualbox 
-   - [VirtualBox Instalable](https://www.virtualbox.org/wiki/Downloads)
-   - [Manual de VBoxManage command-line](https://www.virtualbox.org/manual/ch08.html#vboxmanage-intro)
- - Vagrant
-   - [Vagrant Instalable](https://developer.hashicorp.com/vagrant/downloads?product_intent=vagrant)
-   - [Vagrant Cloud Boxes](https://app.vagrantup.com/boxes/search)
-
- Opcionales
- - Putty / xshell
- - openssh
-
+  - Virtualbox 
+    - [VirtualBox Instalable](https://www.virtualbox.org/wiki/Downloads)
+  - Vagrant
+    - [Vagrant Instalable](https://developer.hashicorp.com/vagrant/downloads?product_intent=vagrant)
+    - Verifique que la version de vagrant sea compatible con su version de VirtualBox [Vagrant VirtualBox provider](https://developer.hashicorp.com/vagrant/docs/providers/virtualbox)
+  - Otros Programas Opcionales:
+    - `Putty`: Conectarse a otros equipos por linea de comandos
+    - `MobaXterm`: Terminal donde podra ejecutar comandos
+    - `winscp`: Copiar archivos entre equipos con GUI
+  - Puede buscar imagenes de una Vagrant Box en [Vagrant Cloud Boxes](https://app.vagrantup.com/boxes/search)
 
 ## Modo de uso
 
@@ -60,10 +67,22 @@ vagrant destroy -f
 | **Make_VagrantBox**	| Playbook de Ansible para generar un vagrantbox en base a una vm |
 | **VagrantFiles** 		| Ejemplos de vagrantfile para levantar distintos equipos |
 
+## Documentacion:
+- [ ] Vagrant
+   - [Doc. Vagrantfile](https://developer.hashicorp.com/vagrant/docs/vagrantfile)
+     - [multi-machine](https://developer.hashicorp.com/vagrant/docs/multi-machine)
+- [ ] VirtualBox
+   - [Manual de VBoxManage command-line](https://www.virtualbox.org/manual/ch08.html#vboxmanage-intro)
+
 ## Info Extra
 
 - [Video - Creacion Vagrant Boxes](https://www.youtube.com/watch?v=TUfciJ7tynY)
+- [Documentacion Creacion de VagrantBox](https://developer.hashicorp.com/vagrant/vagrant-cloud/boxes/create) y [boxes_base](https://developer.hashicorp.com/vagrant/docs/boxes/base)
 
 - [vagrantfile hyper-v](https://learn.microsoft.com/en-us/virtualization/community/team-blog/2017/20170706-vagrant-and-hyper-v-tips-and-tricks)
 - [Vagrantfile windows](https://dev.to/sannae/setting-up-windows-virtual-test-environments-with-vagrant-4k1b)
+
+
+### Cosas curiosas que uno encuentra por ahi...
+- [Entorno de desarrollo Vagrant + laravel](https://medium.com/@joaquin.villagra/homestead-el-entorno-de-desarrollo-ideal-para-laravel-36844d38dc55)
 

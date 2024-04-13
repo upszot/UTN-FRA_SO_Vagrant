@@ -1,2 +1,5 @@
 VagrantFiles/discos
 VagrantFiles/**/.vagrant
+.private
+.private/*
+
