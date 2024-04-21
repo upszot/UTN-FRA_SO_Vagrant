@@ -68,8 +68,8 @@ vagrant halt
 
 | Directorio | Detail |
 | :--: | -- |
-| **Make_VagrantBox**	| Playbook de Ansible para generar un vagrantbox en base a una vm |
 | **VagrantFiles** 		| Ejemplos de vagrantfile para levantar distintos equipos |
+| (En desarrollo) **Make_VagrantBox**	| Playbook de Ansible para generar un vagrantbox en base a una vm |
 
 ## Documentacion:
 - [ ] Vagrant
@@ -78,6 +78,16 @@ vagrant halt
 - [ ] VirtualBox
    - [Manual de VBoxManage command-line](https://www.virtualbox.org/manual/ch08.html#vboxmanage-intro)
 
+## Base de Conocimiento de Errores que les puedan surgir.
+- [Creacion VM (vagrant up)](extras/knowledge_DB/vagratn_up.md)
+- [Conectar contra la vm (vagrant ssh o ssh vagrant@ip)](extras/knowledge_DB/Conexion.md)
+
+> La idea es que tengan al alcance posibles errores que les pueda surgir y como solucionarlos.
+> En caso de que su Problema no se solucione por alguno de estos metodos.
+> Habra que buscar la solucion por internet, o generar una issue en vagrant... 
+> De encontrar la solucion, les pido me la pasen asi entre todos hacemos crecer este apartado.
+
+
 ## Info Extra
 
 - [Video - Creacion Vagrant Boxes](https://www.youtube.com/watch?v=TUfciJ7tynY)
@@ -85,7 +95,7 @@ vagrant halt
 
 - [vagrantfile hyper-v](https://learn.microsoft.com/en-us/virtualization/community/team-blog/2017/20170706-vagrant-and-hyper-v-tips-and-tricks)
 - [Vagrantfile windows](https://dev.to/sannae/setting-up-windows-virtual-test-environments-with-vagrant-4k1b)
-
+- [Agregar Ansible como provisioner](https://briantsaunders.github.io/posts/2021/02/working-with-the-ansible-local-provisioner-for-vagrant-boxes/)
 
 ### Cosas curiosas que uno encuentra por ahi...
 - [Entorno de desarrollo Vagrant + laravel](https://medium.com/@joaquin.villagra/homestead-el-entorno-de-desarrollo-ideal-para-laravel-36844d38dc55)

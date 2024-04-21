@@ -3,23 +3,27 @@
 
 Vagrant.configure("2") do |config|
   #config.ssh.insert_key = false
-
+  
   config.vm.define "primero" do |hardHomefix|
-      hardHomefix.vm.box = "generic/rhel7"
-      hardHomefix.vm.hostname = "hardHomefix"
-      hardHomefix.vm.network "private_network", :name => '', ip: "192.168.56.4"
-
-      hardHomefix.vm.provider "virtualbox" do |vb|
-        vb.memory = "1024"
-        vb.name = "hardHomefix"
-        vb.cpus = 1
-        vb.linked_clone = true
-      end
+    hardHomefix.vm.box = "generic/rhel7"
+    hardHomefix.vm.hostname = "hardHomefix"
+    hardHomefix.vm.network "private_network", :name => '', ip: "192.168.56.4"
+    hardHomefix.ssh.insert_key = true
+    
+    hardHomefix.vm.provision "shell", path: "script_Enable_ssh_password.sh"
+    hardHomefix.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+      vb.name = "hardHomefix"
+      vb.cpus = 1
+      vb.linked_clone = true
+    end    
   end
   config.vm.define :segundo do |hardHomefix2|
       hardHomefix2.vm.box = "generic/rhel8"
       hardHomefix2.vm.hostname = "hardHomefix2"
       hardHomefix2.vm.network "private_network", :name => '', ip: "192.168.56.5"
+      hardHomefix2.ssh.insert_key = false
+
       hardHomefix2.vm.provision "shell", inline: <<-SHELL
       dd if=/dev/zero of=/tmp/homefs.ext4 bs=100M count=1
       mkfs.ext4 /tmp/homefs.ext4 -F -F
@@ -28,7 +32,7 @@ Vagrant.configure("2") do |config|
       mkdir /home/vagrant
       chown vagrant.vagrant /home/vagrant
       SHELL
-
+      hardHomefix2.vm.provision "shell", path: "script_Enable_ssh_password.sh"
       hardHomefix2.vm.provider "virtualbox" do |vb2|
         vb2.memory = "1024"
         vb2.name = "hardHomefix2"
