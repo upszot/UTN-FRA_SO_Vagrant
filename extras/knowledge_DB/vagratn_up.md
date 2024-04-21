@@ -13,7 +13,7 @@
    <div>
    <table>
       <tr>
-         <td><img src=".img/vagrant_up_Error_01.png" width="90%" align="center"></td>
+         <td><img src=".img/vagrant_up_Error_01.png" width="100%" align="center"></td>
       </tr>
       <tr>
          <td><img src=".img/vagrant_up_Error_02_01.png" width="50%" align="center"></td>
