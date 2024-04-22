@@ -16,9 +16,10 @@
     - [Vagrant Instalable](https://developer.hashicorp.com/vagrant/downloads?product_intent=vagrant)
     - Verifique que la version de vagrant sea compatible con su version de VirtualBox [Vagrant VirtualBox provider](https://developer.hashicorp.com/vagrant/docs/providers/virtualbox)
   - Otros Programas Opcionales:
-    - `Putty`: Conectarse a otros equipos por linea de comandos
-    - `MobaXterm`: Terminal donde podra ejecutar comandos
-    - `winscp`: Copiar archivos entre equipos con GUI
+    - `Git Bash`: Terminal donde podra ejecutar comandos (Recomendable para "vagrant ssh")
+    - `MobaXterm`: Terminal donde podra ejecutar comandos ("vagrant ssh" Provoca un fallo, pero sirve para un ssh normal)
+    - `Putty`: Conectarse a otros equipos por protocolo ssh (terminal)
+    - `winscp`: Copiar archivos entre equipos con GUI 
   - Puede buscar imagenes de una Vagrant Box en [Vagrant Cloud Boxes](https://app.vagrantup.com/boxes/search)
 
 ## Modo de uso

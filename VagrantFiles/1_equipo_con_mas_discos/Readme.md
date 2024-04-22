@@ -1,4 +1,8 @@
-# Vagrantfile
+# 1_equipo_con_mas_discos
+
+> Vagrantfile con VM con discos extras..
+> Para lograr eso vamos a utilizar un plugin de vagrant
+> Tambien requerimos habilitar las features experimentales de vagrant. 
 
 ## Agregado de discos a una vm
 
