@@ -1,6 +1,6 @@
 # UTN-FRA_SO_Vagrant
 
-- **Que es Vagrant?**
+- [**Que es Vagrant?**](https://www.youtube.com/watch?v=Ud7cmVCNACE)
 >Vagrant es una aplicación libre desarrollada en ruby que nos permite crear y personalizar entornos de desarrollo livianos, reproducibles y portables. Vagrant nos permite automatizar la creación y gestión de máquinas virtuales. Las máquinas virtuales creadas por vagrant se pueden ejecutar con distintos gestores de máquinas virtuales
 > Oficialmente (VirtualBox, VMWare, KVM,…), pero existen desarrollos para utilizar multiples provider (google , aws, Openstak, vcenter, OpenShift) [Available-Vagrant-Plugins](https://github.com/hashicorp/vagrant/wiki/Available-Vagrant-Plugins#providers) en nuestros ejemplo vamos a usar máquinas virtuales en VirtualBox.
 >
@@ -93,6 +93,14 @@ vagrant halt
 
 - [Video - Creacion Vagrant Boxes](https://www.youtube.com/watch?v=TUfciJ7tynY)
 - [Documentacion Creacion de VagrantBox](https://developer.hashicorp.com/vagrant/vagrant-cloud/boxes/create) y [boxes_base](https://developer.hashicorp.com/vagrant/docs/boxes/base)
+
+- [Lista de reproduccion](https://www.youtube.com/playlist?list=PLTd5ehIj0goPCodyeh2ThX37Ceh-2torY)  de Videos sobre Vagrant 
+  - [Que es vagrant?](https://www.youtube.com/watch?v=Ud7cmVCNACE)
+  - [Instalacion Vagrant (a mano...Sin Chocolatey)](https://www.youtube.com/watch?v=8hrNt46EVSo&list=PLTd5ehIj0goPCodyeh2ThX37Ceh-2torY&index=3)
+  - [Que es una box y como la obtenemos](https://www.youtube.com/watch?v=MAlRVnWaVus&list=PLTd5ehIj0goPCodyeh2ThX37Ceh-2torY&index=3&pp=iAQB)
+  - [Iniciar / Detener vm](https://www.youtube.com/watch?v=7zu6lQDdC_k&list=PLTd5ehIj0goPCodyeh2ThX37Ceh-2torY&index=4&pp=iAQB)
+  - [Aprovisionamiento con bash script](https://www.youtube.com/watch?v=aLYMcwsIcwk&list=PLTd5ehIj0goPCodyeh2ThX37Ceh-2torY&index=5&pp=iAQB)
+  - [Spoiler alert!!! -> Aprovisionamiento con Ansible](https://www.youtube.com/watch?v=LWKL2E2NMB8&list=PLTd5ehIj0goPCodyeh2ThX37Ceh-2torY&index=6&pp=iAQB)
 
 - [vagrantfile hyper-v](https://learn.microsoft.com/en-us/virtualization/community/team-blog/2017/20170706-vagrant-and-hyper-v-tips-and-tricks)
 - [Vagrantfile windows](https://dev.to/sannae/setting-up-windows-virtual-test-environments-with-vagrant-4k1b)
