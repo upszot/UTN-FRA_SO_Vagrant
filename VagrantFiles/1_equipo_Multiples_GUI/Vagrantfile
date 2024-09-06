@@ -38,7 +38,8 @@ Vagrant.configure("2") do |config|
     # Memoria de Video
     vb.customize ['modifyvm', :id, '--vram', '256']
     # Seteo controladora Grafica
-    vb.customize ['modifyvm', :id, '--graphicscontroller', 'vboxsvga']
+    vb.customize ['modifyvm', :id, '--graphicscontroller', 'vboxvga']
+
     # Aceleracion 3D
     vb.customize ['modifyvm', :id, '--accelerate3d', 'on']
     # Aceleracion 2D
