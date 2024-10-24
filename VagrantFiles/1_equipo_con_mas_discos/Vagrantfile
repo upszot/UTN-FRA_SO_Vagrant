@@ -2,6 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
+  #config.vagrant.plugins = "vagrant-disksize"
   config.ssh.insert_key = false
 
   #config.vm.box = "generic/rhel7"
@@ -9,15 +10,17 @@ Vagrant.configure("2") do |config|
   #config.vm.box = "generic/rhel9"
   config.vm.box = "ubuntu/jammy64"
   
-  config.vm.synced_folder '.', '/home/vagrant/foo'
+  config.vm.synced_folder './parcial', '/home/vagrant/repogit'
   config.vm.hostname = "VMDiscos"
   config.vm.define :VMDiscos do |t|
   end
 
+  
+
   config.vm.network "private_network", :name => '', ip: "192.168.56.3"
 
   # Agrego un nuevo disco (Ver Readme.md)
-  config.vm.disk :disk, size: "5GB", name: "extra_storage"
+  config.vm.disk :disk, size: "10GB", name: "extra_storage"
   config.vm.disk :disk, size: "2GB", name: "extra_storage2"
 
   config.vm.provider "virtualbox" do |vb|
