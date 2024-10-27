@@ -8,7 +8,7 @@ echo "  Actualiza la lista de paquetes disponibles desde los repositorios"
 sudo apt-get update > /dev/null
 
 echo " Instalo: tree ansible ca-certificates curl"
-sudo apt-get install -y tree ansible ca-certificates curl > /dev/null
+sudo apt-get install -y tree ansible ca-certificates curl < /dev/null >  /dev/null
 
 
 
