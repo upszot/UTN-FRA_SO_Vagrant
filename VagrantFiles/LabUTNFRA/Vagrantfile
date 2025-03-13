@@ -6,7 +6,10 @@ Vagrant.configure("2") do |config|
 
   # VagrantBox que se usara para levantar.
   config.vm.box = "upszot/LabUTNFRA"
-  
+
+  # Actualiza el VagrantBox si hay una version nueva publicada
+  config.vm.box_check_update = true
+ 
   # Nombre de la pc dentro del Sistema Operativo
   config.vm.hostname = "VMLab01"
   
