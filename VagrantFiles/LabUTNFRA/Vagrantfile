@@ -3,48 +3,35 @@
 
 #https://developer.hashicorp.com/vagrant/docs/providers/virtualbox/configuration
 Vagrant.configure("2") do |config|
-  
+
   # VagrantBox que se usara para levantar.
-  config.vm.box = "upszot/UTNFRA-Prueba"
-
-  #Nombre de la pc dentro del Sistema Operativo
-  config.vm.hostname = "MultiGUI"
+  config.vm.box = "upszot/LabUTNFRA"
   
-  config.vm.synced_folder '.', '/home/vagrant/carpeta_compartida'
+  # Nombre de la pc dentro del Sistema Operativo
+  config.vm.hostname = "VMLab01"
   
+  # Comparto una carpeta del host dentro de la vm
+  config.vm.synced_folder 'Carpeta_compartida/', '/home/vagrant/compartido', owner: 'vagrant', group: 'vagrant'
   
+  #--- Configuracion de Red ---#  
   # Define la dirección IP en una variable
-  ip_address = "192.168.56.4"
-
-  # Configuración de Red
+  ip_address = "192.168.56.7"
+  
+  # Configuración de Red usando la variable en vez de hardcodear el valor
   config.vm.network "private_network", :name => '', ip: ip_address
-  # Fowardeo el Puerto 22 (ssh) de la VM al 8022 del Host
-  config.vm.network "forwarded_port", guest: 22, host: 8022
 
   #Configuraciones de la VM en VirtualBox
   config.vm.provider "virtualbox" do |vb|
     #Cantidad de RAM
-    vb.memory = "3072"
+    vb.memory = "2048"
+    #vb.memory = "1024"
+
     #Cantidad de Procesadores
     vb.cpus = 2
 
     #Nombre de la VM en VirtualBox 
-    vb.name = "MultiGUI"
+    vb.name = "VMLab01"
     
-    # Habilitar portapapeles bidireccional
-    vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
-    # Drag and Drop
-    vb.customize ['modifyvm', :id, '--draganddrop', 'disabled']
-    # Memoria de Video
-    vb.customize ['modifyvm', :id, '--vram', '256']
-    # Seteo controladora Grafica
-    vb.customize ['modifyvm', :id, '--graphicscontroller', 'vboxvga']
-
-    # Aceleracion 3D
-    vb.customize ['modifyvm', :id, '--accelerate3d', 'on']
-    # Aceleracion 2D
-    vb.customize ['modifyvm', :id, '--accelerate2dvideo', 'on']
-
     # Habilitar clones enlazados en VirtualBox
     vb.linked_clone = true
 
@@ -67,7 +54,7 @@ Vagrant.configure("2") do |config|
 
     mkdir -p /home/vagrant/repogit
     cd /home/vagrant/repogit
-    git clone https://github.com/upszot/UTN-FRA_SO_onBording.git 
+    git clone https://github.com/upszot/UTN-FRA_SO_Docker.git
 
   SHELL
 
@@ -80,7 +67,7 @@ Vagrant.configure("2") do |config|
   
   ###########################################################################
   #
-  # Para Ingresar a la VM puede usar cualquiera de las opciones:
+  # Para Ingresar a la VM puede usar cualquiera de las dos opciones:
   #
   ###########################################################################
   # 1. (usar Vagrant)
@@ -92,7 +79,6 @@ Vagrant.configure("2") do |config|
 
   ssh -i .vagrant/machines/default/virtualbox/private_key vagrant@#{ip_address}
   
-  # 3. Esta vm Tiene instalado 2 Entornos de Escritorio. con lo cual tambien puede ingresar de forma grafica
   MENSAJE
 
 end

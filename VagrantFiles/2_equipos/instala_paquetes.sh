@@ -41,5 +41,6 @@ sudo usermod -a -G docker vagrant
 
 echo " Seteo en enable y starteo el servicio de docker"
 sudo systemctl enable --now docker
+
 #-------------------------------------------------------------#
 
