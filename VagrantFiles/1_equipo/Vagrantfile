@@ -42,6 +42,8 @@ Vagrant.configure("2") do |config|
 
   # Puedo Ejecutar un script que esta en un archivo
   config.vm.provision "shell", path: "script_Enable_ssh_password.sh"
+  config.vm.provision "shell", privileged: false, path: "script_Fix_history.sh"
+
 
   config.vm.provision "shell", inline: <<-SHELL
     # Los comandos aca se ejecutan como root
@@ -55,6 +57,7 @@ Vagrant.configure("2") do |config|
     mkdir -p /home/vagrant/repogit
     cd /home/vagrant/repogit
     git clone https://github.com/upszot/UTN-FRA_SO_onBording.git 
+
 
   SHELL
 
