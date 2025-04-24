@@ -57,7 +57,7 @@ rm -rf .vagrant
 
 
 - [ ] **Problemas Crear una VM - (Problema con la red)**
-    > Tras ejecutar "vagrant up" aparece un error de red ( `hostonly_config': undefined method `read_host_only_networks')
+    > Tras ejecutar "vagrant up" aparece un error  de red ( `hostonly_config': undefined method `read_host_only_networks') [Ver Issue](https://github.com/hashicorp/vagrant/issues/13655)
    <details>
      <summary>&emsp; <Mostrar/Ocultar> - [Click para ver] -> Screen del Error</summary>
    <div>
