@@ -18,9 +18,9 @@ Vagrant.configure("2") do |config|
   ip_address = "192.168.56.2"
   
   # Configuración de Red
-  config.vm.network "private_network", :name => '', ip: ip_address
+  config.vm.network "private_network", :name => '', ip: ip_address, virtualbox__intnet: true
   #config.vm.network "private_network", :name => '', ip: "192.168.56.2"
-
+  
 
   #Configuraciones de la VM en VirtualBox
   config.vm.provider "virtualbox" do |vb|

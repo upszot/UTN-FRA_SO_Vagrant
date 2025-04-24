@@ -9,7 +9,7 @@
     > Tambien que NO puede Renombrar un directorio "c:\user\ **EL_USUARIO_DE_USTEDES**"</br>
     > Por si fuera poco, llego a generar una VM en virtualbox a la cual no le pudo cambiar el nombre.
    <details>
-     <summary>&emsp; <Mostrar/Ocultar> - Screen del Error</summary>
+     <summary>&emsp; <Mostrar/Ocultar> - [Click para ver] -> Screen del Error</summary>
    <div>
    <table>
       <tr>
@@ -34,7 +34,7 @@ rm -rf .vagrant
    - Paso2 - Modificamos en la configuracion de VirtualBox el path por defecto donde se alojan las VM
 <div style="margin-left: 40px;">
    <details>
-     <summary>&emsp; <Mostrar/Ocultar> - Screen cambiar preferencias</summary>
+     <summary>&emsp; <Mostrar/Ocultar> - [Click para ver] -> Screen cambiar preferencias</summary>
    <div>
    <table>
       <tr>
@@ -48,8 +48,37 @@ rm -rf .vagrant
    </details>
 </div>
 
-> NOTA: La mayoria de los Errores al levantar VM se soluciona de esta forma.
+> NOTA: La mayoria de los Errores al levantar VM se soluciona de esta forma. </br>
 
 
+</br>
+</br>
+
+
+
+- [ ] **Problemas Crear una VM - (Problema con la red)**
+    > Tras ejecutar "vagrant up" aparece un error de red ( `hostonly_config': undefined method `read_host_only_networks')
+   <details>
+     <summary>&emsp; <Mostrar/Ocultar> - [Click para ver] -> Screen del Error</summary>
+   <div>
+         <td><img src=".img/Vagrant_up_Error_03_Network.png" width="100%" align="center"></td>
+   </div>
+   </details>
+
+   Solucion:
+   - Paso1 - Buscamos en el archivo `Vagrantfile` la configuracion de red.. 
+```sh
+# Linea anterior
+config.vm.network "private_network", :name => '', ip: "192.168.56.2"
+```
+> El numero de IP puede variar entre archivos...(resperar la que estaba)
+
+   - Paso2 - Agregando en dicha linea la opcion `, virtualbox__intnet: true`
+```sh
+# Nueva Linea
+ config.vm.network "private_network", :name => '', ip: "192.168.56.2", virtualbox__intnet: true
+```
+> Esto le indica explícitamente a Vagrant que configure la red privada como una red interna de VirtualBox,</br>
+> evitando el intento fallido de interactuar con las redes "solo-anfitrión" que causaba el error
 
 
