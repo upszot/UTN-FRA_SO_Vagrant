@@ -1,0 +1,69 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+#https://developer.hashicorp.com/vagrant/docs/providers/virtualbox/configuration
+Vagrant.configure("2") do |config|
+
+    # CentOS ARM64 para Mac M1
+    config.vm.box = "ppggff/centos-7-aarch64-2009-4K"
+    config.vm.hostname = "centos-practice"
+    config.vm.provider "qemu" do |qe|
+        qe.memory = "2048"
+        qe.cpus = 2
+        qe.arch = "aarch64"
+        qe.machine = "virt,accel=hvf"
+        qe.cpu = "cortex-a72"
+    end
+    # Deshabilitar carpetas sincronizadas
+    config.vm.synced_folder ".", "/vagrant", disabled: true
+
+    # Red en modo bridge
+    config.vm.network "public_network", bridge: "en0"
+
+    # Provisioning básico
+    config.vm.provision "shell", inline: <<-SHELL
+
+        # Cambiar a mirrors que funcionen
+        sed -i 's/mirror.centos.org/vault.centos.org/g' /etc/yum.repos.d/CentOS-*.repo
+        sed -i 's/^#.*baseurl=http/baseurl=http/g' /etc/yum.repos.d/CentOS-*.repo
+        sed -i 's/^mirrorlist=http/#mirrorlist=http/g' /etc/yum.repos.d/CentOS-*.repo
+
+        # Actualizar e instalar básicos
+        yum clean all
+        yum update -y
+        yum install -y epel-release git
+
+        # Instalar Docker (comandos que funcionaban)
+        yum install -y yum-utils device-mapper-persistent-data lvm2
+        yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+        yum install -y docker-ce docker-ce-cli containerd.io
+
+        # Instalar Docker Compose para ARM64
+        curl -L
+        "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-linux-aarch64" -o /usr/local/bin/docker-compose
+
+        # Asigna Permisos de ejecucion
+        chmod +x /usr/local/bin/docker-compose
+
+        # Crear symlink en /usr/bin por si acaso
+        ln -sf /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+        # Instalar neofetch
+        yum install -y neofetch
+
+        # Configurar Docker
+        usermod -aG docker vagrant
+        systemctl enable docker
+        systemctl start docker
+
+        # Crear archivo que simule un disco adicional
+        dd if=/dev/zero of=/tmp/disk1.img bs=1M count=1024
+
+        losetup /dev/loop10 /tmp/disk1.img
+
+        echo "=== Configuración completada ==="
+        echo "Usa 'ip addr' para ver la IP asignada"
+        echo "Docker version: $(docker --version)"
+        echo "Docker Compose version: $(docker-compose --version)"
+    SHELL
+end
